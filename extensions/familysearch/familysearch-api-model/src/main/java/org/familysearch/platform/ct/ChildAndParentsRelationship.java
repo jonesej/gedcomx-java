@@ -37,7 +37,7 @@ import java.util.List;
  */
 @XmlRootElement
 @JsonElementWrapper( name = "child-and-parents-relationships" )
-@XmlType ( name = "ChildAndParentsRelationship", propOrder = { "parent1", "parent2", "child", "parent1Facts", "parent2Facts", "father", "mother", "fatherFacts", "motherFacts" } )
+@XmlType ( name = "ChildAndParentsRelationship", propOrder = { "parent1", "parent2", "child", "parent1Facts", "parent2Facts" } )
 @JsonInclude ( JsonInclude.Include.NON_NULL )
 public class ChildAndParentsRelationship extends Subject {
 
@@ -46,18 +46,6 @@ public class ChildAndParentsRelationship extends Subject {
   private ResourceReference child;
   private List<Fact> parent1Facts;
   private List<Fact> parent2Facts;
-
-  // todo GenericRelationshipTerms cleanup    remove @Deprecated values and methods   (also remove from propOrder above)
-  /////////////////////
-  @Deprecated
-  private ResourceReference father;
-  @Deprecated
-  private ResourceReference mother;
-  @Deprecated
-  private List<Fact> fatherFacts;
-  @Deprecated
-  private List<Fact> motherFacts;
-  /////////////////////
 
   /**
    * The parent1 of the child.
@@ -297,169 +285,7 @@ public class ChildAndParentsRelationship extends Subject {
       this.parent1Facts.addAll(relationship.parent1Facts);
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
-    // todo GenericRelationshipTerms cleanup    Deprecated - For now we need to embed any Facts on deprecated fact fields also.
-    //          The model should never have both old and new naming at the same time.  This should be removed when the deprecated fact fields go away
-    if (relationship.motherFacts != null) {
-      this.motherFacts = this.motherFacts == null ? new ArrayList<Fact>() : this.motherFacts;
-      this.motherFacts.addAll(relationship.motherFacts);
-    }
-    if (relationship.fatherFacts != null) {
-      this.fatherFacts = this.fatherFacts == null ? new ArrayList<Fact>() : this.fatherFacts;
-      this.fatherFacts.addAll(relationship.fatherFacts);
-    }
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
     super.embed(relationship);
-  }
-
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-  // Methods below are Deprecated
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-
-  /**
-   * The father of the child.
-   *
-   * @return The father of the child.
-   * @deprecated use {@link #getParent1()}
-   */
-  @Deprecated
-  public ResourceReference getFather() {
-    return father;
-  }
-
-  /**
-   * Set the father of the child.
-   *
-   * @param father The father of the child.
-   * @deprecated use {@link #setParent1(ResourceReference)}
-   */
-  @Deprecated
-  public void setFather(ResourceReference father) {
-    this.father = father;
-  }
-  @Deprecated
-  public ChildAndParentsRelationship father(ResourceReference father) {
-    setFather(father);
-    return this;
-  }
-  @Deprecated
-  public ChildAndParentsRelationship father(Person father) {
-    if (father.getId() == null) {
-      throw new IllegalStateException("Cannot reference father: no id.");
-    }
-    setFather(new ResourceReference(URI.create("#" + father.getId())));
-    return this;
-  }
-
-  /**
-   * The mother of the child.
-   *
-   * @return The mother of the child.
-   */
-  @Deprecated
-  public ResourceReference getMother() {
-    return mother;
-  }
-
-  /**
-   * Set the mother of the child.
-   *
-   * @param mother The mother of the child.
-   */
-  @Deprecated
-  public void setMother(ResourceReference mother) {
-    this.mother = mother;
-  }
-  @Deprecated
-  public ChildAndParentsRelationship mother(ResourceReference mother) {
-    setMother(mother);
-    return this;
-  }
-  @Deprecated
-  public ChildAndParentsRelationship mother(Person mother) {
-    if (mother.getId() == null) {
-      throw new IllegalStateException("Cannot reference mother: no id.");
-    }
-    setMother(new ResourceReference(URI.create("#" + mother.getId())));
-    return this;
-  }
-
-  /**
-   * The fact conclusions for the father.
-   *
-   * @return The fact conclusions for the father.
-   */
-  @XmlElement (name="fatherFact")
-  @JsonProperty ("fatherFacts") @org.codehaus.jackson.annotate.JsonProperty ("fatherFacts")
-  @Deprecated
-  public List<Fact> getFatherFacts() {
-    return fatherFacts;
-  }
-
-  /**
-   * The fact conclusions for the father.
-   *
-   * @param facts The fact conclusions for the father.
-   */
-  @JsonProperty("fatherFacts") @org.codehaus.jackson.annotate.JsonProperty("fatherFacts")
-  @Deprecated
-  public void setFatherFacts(List<Fact> facts) {
-    this.fatherFacts = facts;
-  }
-  @Deprecated
-  public void addFatherFact(Fact fact) {
-    if (fact != null) {
-      if (fatherFacts == null) {
-        fatherFacts = new ArrayList<Fact>();
-      }
-      fatherFacts.add(fact);
-    }
-  }
-  @Deprecated
-  public ChildAndParentsRelationship fatherFact(Fact fact) {
-    this.addFatherFact(fact);
-    return this;
-  }
-
-  /**
-   * The fact conclusions for the mother.
-   *
-   * @return The fact conclusions for the mother.
-   */
-  @XmlElement (name="motherFact")
-  @JsonProperty ("motherFacts") @org.codehaus.jackson.annotate.JsonProperty ("motherFacts")
-  @Deprecated
-  public List<Fact> getMotherFacts() {
-    return motherFacts;
-  }
-
-  /**
-   * The fact conclusions for the mother.
-   *
-   * @param facts The fact conclusions for the mother.
-   */
-  @JsonProperty("motherFacts") @org.codehaus.jackson.annotate.JsonProperty("motherFacts")
-  @Deprecated
-  public void setMotherFacts(List<Fact> facts) {
-    this.motherFacts = facts;
-  }
-  @Deprecated
-  public void addMotherFact(Fact fact) {
-    if (fact != null) {
-      if (motherFacts == null) {
-        motherFacts = new ArrayList<Fact>();
-      }
-      motherFacts.add(fact);
-    }
-  }
-  @Deprecated
-  public ChildAndParentsRelationship motherFact(Fact fact) {
-    this.addMotherFact(fact);
-    return this;
   }
 
 }
