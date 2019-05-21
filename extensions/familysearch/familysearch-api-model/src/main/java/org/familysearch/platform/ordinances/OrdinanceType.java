@@ -64,48 +64,6 @@ public enum OrdinanceType implements ControlledVocabulary {
   SealingChildToParents,
 
 
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-  // todo GenericRelationshipTerms ordinances cleanup remove these enums
-  @Deprecated
-  @XmlQNameEnumValue(
-      namespace = "http://lds.org/",
-      localPart = "Baptism"
-  )
-  Deprecated_Baptism,
-  @Deprecated
-  @XmlQNameEnumValue(
-      namespace = "http://lds.org/",
-      localPart = "Confirmation"
-  )
-  Deprecated_Confirmation,
-  @Deprecated
-  @XmlQNameEnumValue(
-      namespace = "http://lds.org/",
-      localPart = "Initiatory"
-  )
-  Deprecated_Initiatory,
-  @Deprecated
-  @XmlQNameEnumValue(
-      namespace = "http://lds.org/",
-      localPart = "Endowment"
-  )
-  Deprecated_Endowment,
-  @Deprecated
-  @XmlQNameEnumValue(
-      namespace = "http://lds.org/",
-      localPart = "SealingToSpouse"
-  )
-  Deprecated_SealingToSpouse,
-  @Deprecated
-  @XmlQNameEnumValue(
-      namespace = "http://lds.org/",
-      localPart = "SealingChildToParents"
-  )
-  Deprecated_SealingChildToParents,
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
   @XmlUnknownQNameEnumValue
   OTHER;
 

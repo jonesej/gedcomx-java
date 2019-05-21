@@ -887,9 +887,9 @@ public class FamilySearchPlatform extends Gedcomx {
   protected static void fixupPersonReferencesInOrdinances(List<Ordinance> ordinances, String personId) {
     for (Ordinance ordinance : ordinances) {
       // todo GenericRelationshipTerms ordinances  remove these fixIds when fields go away
-      fixId(ordinance.getSpouse(), personId);
-      fixId(ordinance.getFather(), personId);
-      fixId(ordinance.getMother(), personId);
+//      fixId(ordinance.getSpouse(), personId);
+//      fixId(ordinance.getFather(), personId);
+//      fixId(ordinance.getMother(), personId);
 
       if (ordinance.getParticipants() != null) {
         for (OrdinanceParticipant participant: ordinance.getParticipants()) {

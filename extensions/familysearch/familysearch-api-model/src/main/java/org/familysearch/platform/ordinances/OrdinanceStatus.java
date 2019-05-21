@@ -88,15 +88,6 @@ public enum OrdinanceStatus implements ControlledVocabulary {
    */
   NeedPermission,
 
-  // todo GenericRelationshipTerms ordinances cleanup
-  @Deprecated Cancelled,
-  @Deprecated Deleted,
-  @Deprecated Invalid,
-  @Deprecated Reserved,
-  @Deprecated Submittable,
-  @Deprecated InProgress,
-  @Deprecated Resubmittable,
-
   @XmlUnknownQNameEnumValue
   OTHER;
 
