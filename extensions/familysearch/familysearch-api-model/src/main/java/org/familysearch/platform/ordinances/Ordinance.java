@@ -36,7 +36,7 @@ import org.gedcomx.rt.json.JsonElementWrapper;
 
 @XmlRootElement(name = "ordinance")
 @JsonElementWrapper(name = "ordinances")
-@XmlType( name = "Ordinance", propOrder = {"type", "status", "statusReasons", "participants", "reservation", "living", "date", "templeCode"})
+@XmlType( name = "Ordinance", propOrder = {"type", "status", "statusReasons", "participants", "reservation", "date", "templeCode"})
 @JsonInclude ( JsonInclude.Include.NON_NULL )
 public class Ordinance extends Conclusion {
 
@@ -47,7 +47,6 @@ public class Ordinance extends Conclusion {
   private List<OrdinanceParticipant> participants;
   private OrdinanceReservation reservation;
 
-  private Boolean living;
   private Date date;
   private String templeCode;
 
@@ -279,30 +278,6 @@ public class Ordinance extends Conclusion {
    */
   public Ordinance reservation(OrdinanceReservation reservation) {
     setReservation(reservation);
-    return this;
-  }
-
-  /**
-   * Whether this ordinance was performed during the life of the person.
-   *
-   * @return Whether this ordinance was performed during the life of the person.
-   */
-  @XmlAttribute
-  public Boolean getLiving() {
-    return living;
-  }
-
-  /**
-   * Whether this ordinance was performed during the life of the person.
-   *
-   * @param living Whether this ordinance was performed during the life of the person.
-   */
-  public void setLiving(Boolean living) {
-    this.living = living;
-  }
-
-  public Ordinance living(Boolean living) {
-    setLiving(living);
     return this;
   }
 
