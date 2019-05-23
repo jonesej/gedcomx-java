@@ -28,7 +28,6 @@ import org.familysearch.platform.ct.ChildAndParentsRelationship;
 import org.familysearch.platform.ct.DiscussionReference;
 import org.familysearch.platform.ordinances.Ordinance;
 import org.familysearch.platform.ordinances.OrdinanceType;
-import org.familysearch.platform.reservations.Reservation;
 import org.gedcomx.Gedcomx;
 import org.gedcomx.common.EvidenceReference;
 import org.gedcomx.common.Note;
