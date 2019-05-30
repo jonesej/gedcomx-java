@@ -533,8 +533,9 @@ public abstract class GedcomxApplicationState<E> {
         // todo GenericRelationshipTerms cleanup    header can go away when old naming has been totally removed
         .header("X-FS-Feature-Tag", "generic.relationship.terms")
 
-        // todo GenericRelationshipTerms ordinances cleanup    header can go away when old naming has been totally removed
-        .header("X-FS-Feature-Tag", "generic.ordinance.terms");
+        // todo GenericOrdinanceTerms ordinances cleanup    header can go away when old naming has been totally removed
+        .header("X-FS-Feature-Tag", "generic.ordinance.terms")
+        .header("X-FS-Feature-Tag", "generic.ordinance.terms.override");  // SDK use only
   }
 
   protected ClientRequest.Builder createAuthenticatedRequest() {
